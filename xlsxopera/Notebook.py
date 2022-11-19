@@ -35,9 +35,9 @@ class Notebook:
         for index, row in enumerate(
                 self.list_rows(start=start, end=end)
         ):
-            cells_value_dict.setdefault(index + 1, [])
+            cells_value_dict.setdefault(start + index, [])
             for value in row:
-                cells_value_dict[index + 1].append(value)
+                cells_value_dict[start + index].append(value)
         return cells_value_dict
 
     def list_cols(self, start: int = 1, end: int = None) -> List[List]:
@@ -74,7 +74,9 @@ class Notebook:
                 continue
             for row in [
                 [cell.value for cell in row]
-                for row in convert_book.iter_rows(min_row=headers_row + 1)
+                for row in convert_book.iter_rows(
+                    min_row=headers_row + 1
+                )
             ]:
                 cells_value_dict[header].append(
                     row[headers.index(header)]
@@ -83,10 +85,16 @@ class Notebook:
 
     def header_values(self, header: str) -> List[str]:
         header_values = []
-        for index, cell_header in enumerate(self.headers()):
-            if cell_header == header:
-                for row in self.list_rows(start=2):
-                    header_values.append(row[index])
+        for index_row, header_row in enumerate(
+                self.list_rows()
+        ):
+            if header in header_row:
+                for index, cell_header in enumerate(header_row):
+                    if cell_header == header:
+                        for row in self.list_rows(
+                                start=index_row + 2
+                        ):
+                            header_values.append(row[index])
         return header_values
 
     def find(self, value: str) -> bool:
