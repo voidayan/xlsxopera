@@ -63,6 +63,16 @@ class Notebook:
             ) for cell in row
         ]
 
+    def value_rows(self, value: str) -> List[List[str]]:
+        return [
+            row for row in self.list_rows() if value in row
+        ]
+
+    def value_cols(self, value: str) -> List[List[str]]:
+        return [
+            col for col in self.list_cols() if value in col
+        ]
+
     def data_convert(self, headers_row: int = 1) -> Dict[str, List]:
         convert_book = self.book
         headers = self.headers()

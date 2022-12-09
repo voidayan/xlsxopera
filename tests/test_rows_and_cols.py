@@ -11,6 +11,31 @@ class TestRowsAndCols:
     def _data_convert_book():
         return Notebook("test.xlsx", "data convert")
 
+    def test_get_cols_with_value(self):
+        assert self._rows_and_cols_book().value_cols("John Smith") == [
+            [
+                'COLUMN E',
+                'value_1_column_E',
+                'value_2_column_E',
+                'value_3_column_E',
+                'value_1_column_E_align_center',
+                'value_1_column_E_center_vertically',
+                'John Smith'
+                ]
+        ]
+
+    def test_get_rows_with_value(self):
+        assert self._rows_and_cols_book().value_rows("value_3_column_F") == [
+            [
+                'value_3_column_A',
+                'value_3_column_B',
+                'value_3_column_C',
+                'value_3_column_D',
+                'value_3_column_E',
+                'value_3_column_F'
+                ]
+        ]
+
     def test_get_cell_coordinates_by_value(self):
         assert self._rows_and_cols_book().value_coordinates(
             "value_1_column_F"
