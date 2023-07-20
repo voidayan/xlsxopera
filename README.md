@@ -1,7 +1,7 @@
 # xlsxopera
 Working on xlsx (Microsoft Excel) files. Convert to list, dict, get headers, cell values, positions and more.
 
-Developed by voidayan (c) 2022
+Developed by yanemil (c) 2022
 
 ## Install
 

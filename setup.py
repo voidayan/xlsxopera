@@ -4,9 +4,9 @@ from setuptools import setup, find_packages
 setup(
     name="xlsxopera",
     version="1.1",
-    author="voidayan",
+    author="yanemil",
     author_email="jan.emil.wojda@gmail.com",
-    url='https://github.com/voidayan/xlsxopera',
+    url='https://github.com/yanemil/xlsxopera',
     description="Work on .xlsx files.",
     long_description_content_type="text/markdown",
     long_description=open('README.md').read(),
